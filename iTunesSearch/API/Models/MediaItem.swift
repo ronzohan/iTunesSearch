@@ -24,10 +24,10 @@ struct MediaItem: Codable {
     let previewURL: String?
     let artworkUrl30: String?
     let artworkUrl60: String?
-    let artworkUrl100: String
-    let collectionPrice: Double
+    let artworkUrl100: String?
+    let collectionPrice: Double?
     let trackPrice: Double?
-    let releaseDate: Date
+    //let releaseDate: Date?
     let collectionExplicitness: Explicitness
     let trackExplicitness: Explicitness?
     let discCount: Int?
@@ -76,7 +76,7 @@ struct MediaItem: Codable {
         case artworkUrl100
         case collectionPrice
         case trackPrice
-        case releaseDate
+        //case releaseDate
         case collectionExplicitness
         case trackExplicitness
         case discCount

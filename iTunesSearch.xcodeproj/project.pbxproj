@@ -50,6 +50,8 @@
 		6B194AA12307012A0036E437 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194AA02307012A0036E437 /* HomeViewModel.swift */; };
 		6B194AA32307018A0036E437 /* HomeViewModelRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194AA22307018A0036E437 /* HomeViewModelRepository.swift */; };
 		6B194AA5230703AB0036E437 /* MediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194AA4230703AB0036E437 /* MediaType.swift */; };
+		6BED47F72307157D00D7FDCF /* MediaItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BED47F52307157D00D7FDCF /* MediaItemTableViewCell.swift */; };
+		6BED47F82307157D00D7FDCF /* MediaItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BED47F62307157D00D7FDCF /* MediaItemTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +125,8 @@
 		6B194AA02307012A0036E437 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		6B194AA22307018A0036E437 /* HomeViewModelRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelRepository.swift; sourceTree = "<group>"; };
 		6B194AA4230703AB0036E437 /* MediaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaType.swift; sourceTree = "<group>"; };
+		6BED47F52307157D00D7FDCF /* MediaItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItemTableViewCell.swift; sourceTree = "<group>"; };
+		6BED47F62307157D00D7FDCF /* MediaItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaItemTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +337,8 @@
 				6B194A882306F1E70036E437 /* LargeMediaItemCollectionViewCell.xib */,
 				6B194A8F2306F55B0036E437 /* SmallMediaItemCollectionViewCell.swift */,
 				6B194A902306F55B0036E437 /* SmallMediaItemCollectionViewCell.xib */,
+				6BED47F52307157D00D7FDCF /* MediaItemTableViewCell.swift */,
+				6BED47F62307157D00D7FDCF /* MediaItemTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -451,6 +457,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BED47F82307157D00D7FDCF /* MediaItemTableViewCell.xib in Resources */,
 				6B194A922306F55B0036E437 /* SmallMediaItemCollectionViewCell.xib in Resources */,
 				6B1949FF2306DD4B0036E437 /* LaunchScreen.storyboard in Resources */,
 				6B1949FC2306DD4B0036E437 /* Assets.xcassets in Resources */,
@@ -543,6 +550,7 @@
 				6B1949FA2306DD4A0036E437 /* iTunesSearch.xcdatamodeld in Sources */,
 				6B194AA5230703AB0036E437 /* MediaType.swift in Sources */,
 				6B194A5E2306DF4C0036E437 /* URLSessionDataTaskProtocol.swift in Sources */,
+				6BED47F72307157D00D7FDCF /* MediaItemTableViewCell.swift in Sources */,
 				6B194A562306DF4C0036E437 /* BaseAPIManagerProtocol.swift in Sources */,
 				6B194AA12307012A0036E437 /* HomeViewModel.swift in Sources */,
 				6B194A9C2306FB040036E437 /* SearchCoordinator.swift in Sources */,
