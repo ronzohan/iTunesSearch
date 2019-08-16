@@ -16,7 +16,6 @@
 		6B194A0A2306DD4B0036E437 /* iTunesSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194A092306DD4B0036E437 /* iTunesSearchTests.swift */; };
 		6B194A152306DD4C0036E437 /* iTunesSearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194A142306DD4C0036E437 /* iTunesSearchUITests.swift */; };
 		6B194A432306DF4C0036E437 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194A232306DF4C0036E437 /* APIClient.swift */; };
-		6B194A532306DF4C0036E437 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194A352306DF4C0036E437 /* Article.swift */; };
 		6B194A542306DF4C0036E437 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194A362306DF4C0036E437 /* HTTPMethod.swift */; };
 		6B194A552306DF4C0036E437 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194A382306DF4C0036E437 /* APIManager.swift */; };
 		6B194A562306DF4C0036E437 /* BaseAPIManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194A392306DF4C0036E437 /* BaseAPIManagerProtocol.swift */; };
@@ -35,9 +34,21 @@
 		6B194A752306E1640036E437 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B194A6A2306E1640036E437 /* RxCocoa.framework */; };
 		6B194A762306E1640036E437 /* IQKeyboardManagerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B194A6B2306E1640036E437 /* IQKeyboardManagerSwift.framework */; };
 		6B194A772306E1640036E437 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B194A6C2306E1640036E437 /* Kingfisher.framework */; };
-		6B194A782306E1640036E437 /* IQKeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B194A6D2306E1640036E437 /* IQKeyboardManager.framework */; };
 		6B194A792306E1640036E437 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B194A6E2306E1640036E437 /* RxSwift.framework */; };
 		6B194A7B2306E2330036E437 /* ResponseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194A7A2306E2330036E437 /* ResponseInfo.swift */; };
+		6B194A812306E66F0036E437 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194A7F2306E66F0036E437 /* HomeViewController.swift */; };
+		6B194A822306E66F0036E437 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B194A802306E66F0036E437 /* HomeViewController.xib */; };
+		6B194A852306E6D70036E437 /* UIViewController+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194A842306E6D70036E437 /* UIViewController+Nib.swift */; };
+		6B194A892306F1E70036E437 /* LargeMediaItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194A872306F1E70036E437 /* LargeMediaItemCollectionViewCell.swift */; };
+		6B194A8A2306F1E70036E437 /* LargeMediaItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B194A882306F1E70036E437 /* LargeMediaItemCollectionViewCell.xib */; };
+		6B194A912306F55B0036E437 /* SmallMediaItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194A8F2306F55B0036E437 /* SmallMediaItemCollectionViewCell.swift */; };
+		6B194A922306F55B0036E437 /* SmallMediaItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B194A902306F55B0036E437 /* SmallMediaItemCollectionViewCell.xib */; };
+		6B194A942306F70E0036E437 /* MediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194A932306F70E0036E437 /* MediaItem.swift */; };
+		6B194A962306F8950036E437 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194A952306F8950036E437 /* SearchResponse.swift */; };
+		6B194A982306F9C80036E437 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194A972306F9C80036E437 /* AppCoordinator.swift */; };
+		6B194A9A2306FA5C0036E437 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194A992306FA5C0036E437 /* Coordinator.swift */; };
+		6B194A9C2306FB040036E437 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194A9B2306FB040036E437 /* SearchCoordinator.swift */; };
+		6B194A9F2306FB370036E437 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194A9E2306FB370036E437 /* ViewControllerFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +84,6 @@
 		6B194A142306DD4C0036E437 /* iTunesSearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesSearchUITests.swift; sourceTree = "<group>"; };
 		6B194A162306DD4C0036E437 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B194A232306DF4C0036E437 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		6B194A352306DF4C0036E437 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		6B194A362306DF4C0036E437 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		6B194A382306DF4C0036E437 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		6B194A392306DF4C0036E437 /* BaseAPIManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPIManagerProtocol.swift; sourceTree = "<group>"; };
@@ -96,9 +106,21 @@
 		6B194A6A2306E1640036E437 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		6B194A6B2306E1640036E437 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IQKeyboardManagerSwift.framework; path = Carthage/Build/iOS/IQKeyboardManagerSwift.framework; sourceTree = "<group>"; };
 		6B194A6C2306E1640036E437 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
-		6B194A6D2306E1640036E437 /* IQKeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IQKeyboardManager.framework; path = Carthage/Build/iOS/IQKeyboardManager.framework; sourceTree = "<group>"; };
 		6B194A6E2306E1640036E437 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		6B194A7A2306E2330036E437 /* ResponseInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseInfo.swift; sourceTree = "<group>"; };
+		6B194A7F2306E66F0036E437 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		6B194A802306E66F0036E437 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		6B194A842306E6D70036E437 /* UIViewController+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Nib.swift"; sourceTree = "<group>"; };
+		6B194A872306F1E70036E437 /* LargeMediaItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeMediaItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		6B194A882306F1E70036E437 /* LargeMediaItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LargeMediaItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		6B194A8F2306F55B0036E437 /* SmallMediaItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallMediaItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		6B194A902306F55B0036E437 /* SmallMediaItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallMediaItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		6B194A932306F70E0036E437 /* MediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItem.swift; sourceTree = "<group>"; };
+		6B194A952306F8950036E437 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
+		6B194A972306F9C80036E437 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		6B194A992306FA5C0036E437 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		6B194A9B2306FB040036E437 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		6B194A9E2306FB370036E437 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +135,6 @@
 				6B194A752306E1640036E437 /* RxCocoa.framework in Frameworks */,
 				6B194A762306E1640036E437 /* IQKeyboardManagerSwift.framework in Frameworks */,
 				6B194A772306E1640036E437 /* Kingfisher.framework in Frameworks */,
-				6B194A782306E1640036E437 /* IQKeyboardManager.framework in Frameworks */,
 				6B194A792306E1640036E437 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,11 +159,13 @@
 		6B1949E52306DD4A0036E437 = {
 			isa = PBXGroup;
 			children = (
+				6B194A5F2306DFF20036E437 /* input.xcfilelist */,
+				6B194A602306E0110036E437 /* output.xcfilelist */,
+				6B194A632306E1640036E437 /* Frameworks */,
 				6B1949F02306DD4A0036E437 /* iTunesSearch */,
 				6B194A082306DD4B0036E437 /* iTunesSearchTests */,
 				6B194A132306DD4C0036E437 /* iTunesSearchUITests */,
 				6B1949EF2306DD4A0036E437 /* Products */,
-				6B194A632306E1640036E437 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -159,16 +182,18 @@
 		6B1949F02306DD4A0036E437 /* iTunesSearch */ = {
 			isa = PBXGroup;
 			children = (
+				6B194A9D2306FB2D0036E437 /* ViewControllerFactory */,
+				6B194A832306E6BE0036E437 /* Extensions */,
 				6B194A002306DD4B0036E437 /* Info.plist */,
 				6B1949F12306DD4A0036E437 /* AppDelegate.swift */,
 				6B1949F32306DD4A0036E437 /* ViewController.swift */,
 				6B1949FB2306DD4B0036E437 /* Assets.xcassets */,
-				6B194A5F2306DFF20036E437 /* input.xcfilelist */,
-				6B194A602306E0110036E437 /* output.xcfilelist */,
 				6B194A222306DF4C0036E437 /* API */,
+				6B194A7D2306E6170036E437 /* Coordinator */,
 				6B1949F82306DD4A0036E437 /* iTunesSearch.xcdatamodeld */,
 				6B1949FD2306DD4B0036E437 /* LaunchScreen.storyboard */,
 				6B1949F52306DD4A0036E437 /* Main.storyboard */,
+				6B194A7C2306E5D40036E437 /* Modules */,
 			);
 			path = iTunesSearch;
 			sourceTree = "<group>";
@@ -210,8 +235,8 @@
 		6B194A242306DF4C0036E437 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				6B194A352306DF4C0036E437 /* Article.swift */,
 				6B194A262306DF4C0036E437 /* Responses */,
+				6B194A932306F70E0036E437 /* MediaItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -220,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				6B194A7A2306E2330036E437 /* ResponseInfo.swift */,
+				6B194A952306F8950036E437 /* SearchResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -248,7 +274,6 @@
 			isa = PBXGroup;
 			children = (
 				6B194A652306E1640036E437 /* Differentiator.framework */,
-				6B194A6D2306E1640036E437 /* IQKeyboardManager.framework */,
 				6B194A6B2306E1640036E437 /* IQKeyboardManagerSwift.framework */,
 				6B194A6C2306E1640036E437 /* Kingfisher.framework */,
 				6B194A692306E1640036E437 /* RxBlocking.framework */,
@@ -260,6 +285,61 @@
 				6B194A672306E1640036E437 /* SnapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6B194A7C2306E5D40036E437 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				6B194A7E2306E65B0036E437 /* Home */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		6B194A7D2306E6170036E437 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				6B194A972306F9C80036E437 /* AppCoordinator.swift */,
+				6B194A992306FA5C0036E437 /* Coordinator.swift */,
+				6B194A9B2306FB040036E437 /* SearchCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		6B194A7E2306E65B0036E437 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				6B194A862306E9660036E437 /* Cells */,
+				6B194A7F2306E66F0036E437 /* HomeViewController.swift */,
+				6B194A802306E66F0036E437 /* HomeViewController.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		6B194A832306E6BE0036E437 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6B194A842306E6D70036E437 /* UIViewController+Nib.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6B194A862306E9660036E437 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6B194A872306F1E70036E437 /* LargeMediaItemCollectionViewCell.swift */,
+				6B194A882306F1E70036E437 /* LargeMediaItemCollectionViewCell.xib */,
+				6B194A8F2306F55B0036E437 /* SmallMediaItemCollectionViewCell.swift */,
+				6B194A902306F55B0036E437 /* SmallMediaItemCollectionViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		6B194A9D2306FB2D0036E437 /* ViewControllerFactory */ = {
+			isa = PBXGroup;
+			children = (
+				6B194A9E2306FB370036E437 /* ViewControllerFactory.swift */,
+			);
+			path = ViewControllerFactory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,9 +448,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B194A922306F55B0036E437 /* SmallMediaItemCollectionViewCell.xib in Resources */,
 				6B1949FF2306DD4B0036E437 /* LaunchScreen.storyboard in Resources */,
 				6B1949FC2306DD4B0036E437 /* Assets.xcassets in Resources */,
 				6B1949F72306DD4A0036E437 /* Main.storyboard in Resources */,
+				6B194A8A2306F1E70036E437 /* LargeMediaItemCollectionViewCell.xib in Resources */,
+				6B194A822306E66F0036E437 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,7 +476,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		6B194A612306E0EA0036E437 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -407,7 +490,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
@@ -438,19 +521,28 @@
 			files = (
 				6B194A5C2306DF4C0036E437 /* Endpoint.swift in Sources */,
 				6B194A7B2306E2330036E437 /* ResponseInfo.swift in Sources */,
+				6B194A892306F1E70036E437 /* LargeMediaItemCollectionViewCell.swift in Sources */,
 				6B194A592306DF4C0036E437 /* Request.swift in Sources */,
 				6B194A572306DF4C0036E437 /* AuthManager.swift in Sources */,
+				6B194A9F2306FB370036E437 /* ViewControllerFactory.swift in Sources */,
 				6B194A5A2306DF4C0036E437 /* ArticlesEndpoint.swift in Sources */,
+				6B194A982306F9C80036E437 /* AppCoordinator.swift in Sources */,
+				6B194A962306F8950036E437 /* SearchResponse.swift in Sources */,
+				6B194A9A2306FA5C0036E437 /* Coordinator.swift in Sources */,
+				6B194A812306E66F0036E437 /* HomeViewController.swift in Sources */,
 				6B194A542306DF4C0036E437 /* HTTPMethod.swift in Sources */,
+				6B194A912306F55B0036E437 /* SmallMediaItemCollectionViewCell.swift in Sources */,
 				6B194A582306DF4C0036E437 /* URLSessionProtocol.swift in Sources */,
 				6B194A5B2306DF4C0036E437 /* AuthEndpoint.swift in Sources */,
 				6B194A552306DF4C0036E437 /* APIManager.swift in Sources */,
-				6B194A532306DF4C0036E437 /* Article.swift in Sources */,
+				6B194A852306E6D70036E437 /* UIViewController+Nib.swift in Sources */,
 				6B194A5D2306DF4C0036E437 /* APIConfig.swift in Sources */,
 				6B1949FA2306DD4A0036E437 /* iTunesSearch.xcdatamodeld in Sources */,
 				6B194A5E2306DF4C0036E437 /* URLSessionDataTaskProtocol.swift in Sources */,
 				6B1949F42306DD4A0036E437 /* ViewController.swift in Sources */,
 				6B194A562306DF4C0036E437 /* BaseAPIManagerProtocol.swift in Sources */,
+				6B194A9C2306FB040036E437 /* SearchCoordinator.swift in Sources */,
+				6B194A942306F70E0036E437 /* MediaItem.swift in Sources */,
 				6B1949F22306DD4A0036E437 /* AppDelegate.swift in Sources */,
 				6B194A432306DF4C0036E437 /* APIClient.swift in Sources */,
 			);
