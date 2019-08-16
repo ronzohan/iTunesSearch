@@ -25,6 +25,7 @@ class HomeViewModel {
     // Output observables
     private let mediaItemsSubject = PublishSubject<[MediaItem]>()
 
+    private let disposeBag = DisposeBag()
     private let repository: HomeViewModelRepositoryProtocol
 
     let input: Input
@@ -38,6 +39,18 @@ class HomeViewModel {
     }
 
     private func setupBinding() {
-        
+        searchQueryStringSubject
+            .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
+            // Fetch result for query string
+            .flatMap { [repository] in repository.searchItunesFor(term: $0, country: "au", media: .movie) }
+            .subscribe(onNext: { result in
+                switch result {
+                case .success(let response):
+                    debugPrint(response)
+                default:
+                    break
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
