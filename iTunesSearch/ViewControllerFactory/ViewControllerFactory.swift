@@ -13,6 +13,8 @@ struct ViewControllerFactory {
 
     static func makeHomeViewController() -> HomeViewController {
         let homeViewController = HomeViewController.instantiateFromNib()
+        let repository = HomeViewModelRepository()
+        homeViewController.viewModel = HomeViewModel(repository: repository)
         return homeViewController
     }
 }
