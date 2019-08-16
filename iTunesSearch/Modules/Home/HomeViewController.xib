@@ -12,7 +12,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="iTunesSearch" customModuleProvider="target">
             <connections>
-                <outlet property="searchBar" destination="VKf-rU-0o2" id="jKH-ii-dTh"/>
                 <outlet property="searchResultsTableView" destination="rlo-PW-o0m" id="5fm-3M-Od2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,18 +25,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
-                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="VKf-rU-0o2">
-                    <rect key="frame" x="0.0" y="44" width="414" height="56"/>
-                    <textInputTraits key="textInputTraits"/>
-                </searchBar>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="rlo-PW-o0m" secondAttribute="bottom" id="2EY-7J-HfX"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VKf-rU-0o2" secondAttribute="trailing" id="JuL-O4-dGS"/>
-                <constraint firstItem="VKf-rU-0o2" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="KP7-JH-yOq"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rlo-PW-o0m" secondAttribute="trailing" id="T2f-MR-twP"/>
-                <constraint firstItem="VKf-rU-0o2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="sS8-WV-cLR"/>
                 <constraint firstItem="rlo-PW-o0m" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="u82-a5-yTo"/>
                 <constraint firstItem="rlo-PW-o0m" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="yLE-c9-PBd"/>
             </constraints>

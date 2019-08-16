@@ -16,6 +16,6 @@ protocol Endpoint {
 
 extension Endpoint {
     var authNeeded: Bool {
-        return true
+        return false
     }
 }

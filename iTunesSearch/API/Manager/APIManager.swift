@@ -26,17 +26,21 @@ class BaseAPIManager {
 class APIManager: BaseAPIManager {
     static let shared = APIManager()
 
-//    func login(mobileNumber: String, password: String) -> Observable<Result<LoginResponse, Error>> {
-//        enum Parameters: String {
-//            case mobileNumber = "phone_number"
-//            case password
-//        }
-//
-//        let parameters: [String: Any] = [
-//            Parameters.mobileNumber.rawValue: mobileNumber,
-//            Parameters.password.rawValue: password,
-//        ]
-//
-//        return send(endpoint: AuthEndpoint.login, parameters: parameters)
-//    }
+    func searchItunesFor(term: String,
+                         country: String,
+                         media: MediaType) -> Observable<Result<SearchResponse, Error>> {
+        enum Parameters: String {
+            case term
+            case country
+            case media
+        }
+
+        let parameters: [String: Any] = [
+            Parameters.term.rawValue: term,
+            Parameters.country.rawValue: country,
+            Parameters.media.rawValue: media.rawValue
+        ]
+
+        return send(endpoint: SearchEndpoint.search, parameters: parameters)
+    }
 }

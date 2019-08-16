@@ -16,8 +16,8 @@ class APIConfig {
         case production
     }
 
-    private let developmentBaseURL = "https://abcompany001.herokuapp.com/api/v1"
-    private let productionBaseURL = "https://abcompany001.herokuapp.com/api/v1"
+    private let developmentBaseURL = "https://itunes.apple.com"
+    private let productionBaseURL = "https://itunes.apple.com"
 
     var environment: Environment {
         #if DEVELOPMENT

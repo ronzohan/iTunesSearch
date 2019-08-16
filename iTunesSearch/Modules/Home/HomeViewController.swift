@@ -11,10 +11,11 @@ import RxSwift
 import RxDataSources
 
 class HomeViewController: UIViewController, NibInstantiated {
-    @IBOutlet var searchBar: UISearchBar!
+    private let searchBar = UISearchBar()
     @IBOutlet var searchResultsTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.titleView = searchBar
     }
 }
