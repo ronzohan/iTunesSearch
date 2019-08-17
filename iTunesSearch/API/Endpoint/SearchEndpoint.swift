@@ -21,6 +21,6 @@ extension SearchEndpoint: Endpoint {
     }
 
     var method: HTTPMethod {
-        return .post
+        return .get
     }
 }
