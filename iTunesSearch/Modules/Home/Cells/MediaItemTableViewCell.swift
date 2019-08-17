@@ -7,18 +7,24 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MediaItemTableViewCell: UITableViewCell {
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var priceLabel: UILabel!
+    @IBOutlet var castLabel: UILabel!
+    @IBOutlet var artworkImageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func configure(with mediaItem: MediaItem) {
+        titleLabel.text = mediaItem.trackName
+        priceLabel.text = "\(mediaItem.currency) \(mediaItem.trackPrice ?? 0)"
+        castLabel.text = "\(mediaItem.artistName)"
+        let url = URL(string: mediaItem.artworkUrl100 ?? "")
+        artworkImageView.kf.setImage(with: url)
     }
-    
 }
