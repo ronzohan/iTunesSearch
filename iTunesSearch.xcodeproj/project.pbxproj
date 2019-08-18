@@ -50,7 +50,6 @@
 		6B194AA12307012A0036E437 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194AA02307012A0036E437 /* HomeViewModel.swift */; };
 		6B194AA32307018A0036E437 /* HomeViewModelRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194AA22307018A0036E437 /* HomeViewModelRepository.swift */; };
 		6B194AA5230703AB0036E437 /* MediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194AA4230703AB0036E437 /* MediaType.swift */; };
-		6B971C9B230858CD004DE5AF /* Cosmos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B971C9A230858CD004DE5AF /* Cosmos.framework */; };
 		6B971C9F2308E56C004DE5AF /* MediaDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B971C9D2308E56C004DE5AF /* MediaDetailsViewController.swift */; };
 		6B971CA02308E56C004DE5AF /* MediaDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B971C9E2308E56C004DE5AF /* MediaDetailsViewController.xib */; };
 		6B971CA22308E713004DE5AF /* MediaDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B971CA12308E713004DE5AF /* MediaDetailsViewModel.swift */; };
@@ -134,7 +133,6 @@
 		6B194AA02307012A0036E437 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		6B194AA22307018A0036E437 /* HomeViewModelRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelRepository.swift; sourceTree = "<group>"; };
 		6B194AA4230703AB0036E437 /* MediaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaType.swift; sourceTree = "<group>"; };
-		6B971C9A230858CD004DE5AF /* Cosmos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cosmos.framework; path = Carthage/Build/iOS/Cosmos.framework; sourceTree = "<group>"; };
 		6B971C9D2308E56C004DE5AF /* MediaDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailsViewController.swift; sourceTree = "<group>"; };
 		6B971C9E2308E56C004DE5AF /* MediaDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaDetailsViewController.xib; sourceTree = "<group>"; };
 		6B971CA12308E713004DE5AF /* MediaDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B971C9B230858CD004DE5AF /* Cosmos.framework in Frameworks */,
 				6B194A702306E1640036E437 /* Differentiator.framework in Frameworks */,
 				6B194A712306E1640036E437 /* RxRelay.framework in Frameworks */,
 				6B194A722306E1640036E437 /* SnapKit.framework in Frameworks */,
@@ -298,7 +295,6 @@
 		6B194A632306E1640036E437 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6B971C9A230858CD004DE5AF /* Cosmos.framework */,
 				6B194A652306E1640036E437 /* Differentiator.framework */,
 				6B194A6B2306E1640036E437 /* IQKeyboardManagerSwift.framework */,
 				6B194A6C2306E1640036E437 /* Kingfisher.framework */,
