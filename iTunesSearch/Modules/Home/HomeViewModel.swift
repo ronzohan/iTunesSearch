@@ -13,6 +13,7 @@ import RxCocoa
 class HomeViewModel {
     struct Input {
         let searchQueryString: AnyObserver<String>
+        let selectedMediaItem: AnyObserver<MediaItem>
     }
 
     struct Output {
@@ -22,6 +23,7 @@ class HomeViewModel {
 
     // Input observers
     private let searchQueryStringSubject = PublishSubject<String>()
+    private let selectedMediaItem = PublishSubject<MediaItem>()
 
     // Output observables
     private let mediaItemsSubject = PublishSubject<[MediaItemSectionModel]>()
@@ -30,12 +32,15 @@ class HomeViewModel {
     private let disposeBag = DisposeBag()
     private let repository: HomeViewModelRepositoryProtocol
 
+    weak var delegate: HomeDelegate?
+
     let input: Input
     let output: Output
 
     init(repository: HomeViewModelRepositoryProtocol) {
         self.repository = repository
-        input = Input(searchQueryString: searchQueryStringSubject.asObserver())
+        input = Input(searchQueryString: searchQueryStringSubject.asObserver(),
+                      selectedMediaItem: selectedMediaItem.asObserver())
         output = Output(mediaItems: mediaItemsSubject.asDriver(onErrorJustReturn: []),
                         isLoading: isLoadingSubject.asDriver(onErrorJustReturn: false))
         setupBinding()
@@ -43,13 +48,17 @@ class HomeViewModel {
 
     private func setupBinding() {
         searchQueryStringSubject
+            // Add a timer on when to search for the query
+            // so that api will not be called everytime if the user is typing very fast
+            .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
             // Show loading indicator
             .do(onNext: { [weak self] _ in
                 self?.isLoadingSubject.onNext(true)
             })
-            .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
             // Fetch result for query string
-            .flatMap { [repository] in repository.searchItunesFor(term: $0, country: "au", media: .movie) }
+            .flatMap { [repository] in repository.searchItunesFor(term: $0,
+                                                                  country: "au",
+                                                                  media: .movie) }
             // Hide loading indicator
             .do(onNext: { [weak self] _ in
                 self?.isLoadingSubject.onNext(false)
@@ -64,6 +73,12 @@ class HomeViewModel {
                 default:
                     break
                 }
+            })
+            .disposed(by: disposeBag)
+
+        selectedMediaItem
+            .subscribe(onNext: { [weak self] item in
+                self?.delegate?.homeGoToDetail(with: item)
             })
             .disposed(by: disposeBag)
     }

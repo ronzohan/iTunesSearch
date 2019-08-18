@@ -25,6 +25,14 @@ class SearchCoordinator: Coordinator {
     }
 
     func start() {
+        homeViewController.viewModel?.delegate = self
+    }
+}
 
+extension SearchCoordinator: HomeDelegate {
+    func homeGoToDetail(with mediaItem: MediaItem) {
+        let mediaDetailViewController =
+            ViewControllerFactory.makeMediaDetailsViewController(mediaItem: mediaItem)
+        navigationController.pushViewController(mediaDetailViewController, animated: true)
     }
 }

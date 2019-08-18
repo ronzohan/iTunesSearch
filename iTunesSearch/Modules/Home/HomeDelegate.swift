@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+protocol HomeDelegate: class {
+    func homeGoToDetail(with mediaItem: MediaItem)
+}

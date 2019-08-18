@@ -57,6 +57,10 @@ extension HomeViewController {
             .orEmpty
             .bind(to: viewModel.input.searchQueryString)
             .disposed(by: disposeBag)
+
+        searchResultsTableView.rx.modelSelected(MediaItem.self)
+            .bind(to: viewModel.input.selectedMediaItem)
+            .disposed(by: disposeBag)
     }
 
     private func setupOutputBinding() {
@@ -75,5 +79,7 @@ extension HomeViewController {
             .mediaItems
             .drive(searchResultsTableView.rx.items(dataSource: datasource))
             .disposed(by: disposeBag)
+
+
     }
 }
