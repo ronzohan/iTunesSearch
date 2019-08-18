@@ -62,6 +62,18 @@ extension HomeViewController {
     private func setupOutputBinding() {
         guard let viewModel = viewModel else { return }
 
-        
+        let datasource = RxTableViewSectionedReloadDataSource<MediaItemSectionModel>(
+            configureCell: { (_, tableView, indexPath, item) -> UITableViewCell in
+                let cell: MediaItemTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+                cell.configure(with: item)
+                return cell
+            }
+        )
+
+        viewModel
+            .output
+            .mediaItems
+            .drive(searchResultsTableView.rx.items(dataSource: datasource))
+            .disposed(by: disposeBag)
     }
 }
