@@ -13,12 +13,8 @@ class MediaItemTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
     @IBOutlet var castLabel: UILabel!
+    @IBOutlet var genreLabel: UILabel!
     @IBOutlet var artworkImageView: UIImageView!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
     func configure(with mediaItem: MediaItem) {
         titleLabel.text = mediaItem.trackName
@@ -26,5 +22,6 @@ class MediaItemTableViewCell: UITableViewCell {
         castLabel.text = "\(mediaItem.artistName)"
         let url = URL(string: mediaItem.artworkUrl100 ?? "")
         artworkImageView.kf.setImage(with: url)
+        genreLabel.text = mediaItem.primaryGenreName
     }
 }
