@@ -13,6 +13,8 @@ import RxSwift
 class MediaDetailsRepository {
     let context = CoreDataManager.shared.persistentContainer.viewContext
 
+    // This will update the MediaItem if the MediaItem already exists in the data
+    // or save it
     func saveMediaItem(_ mediaItem: MediaItemProtocol) -> Observable<Result<MediaItemProtocol, Error>> {
         return Observable.create({ [weak self] observer -> Disposable in
             guard let strongSelf = self else { return Disposables.create() }
@@ -49,10 +51,10 @@ class MediaDetailsRepository {
 
                 let mediaItem = try self?.context.fetch(mediaItemFetchRequest).first
                 mediaItem?.lastVisitDate = date
-
                 try self?.context.save()
+                observer.onNext(Result.success(true))
             } catch let error {
-                observer.onError(error)
+                observer.onNext(Result.failure(error))
             }
 
             return Disposables.create()
