@@ -18,8 +18,8 @@ class MediaItemTableViewCell: UITableViewCell {
 
     func configure(with mediaItem: MediaItem) {
         titleLabel.text = mediaItem.trackName
-        priceLabel.text = "\(mediaItem.currency) \(mediaItem.trackPrice ?? 0)"
-        castLabel.text = "\(mediaItem.artistName)"
+        priceLabel.text = "\(mediaItem.currency ?? "AUD") \(mediaItem.trackPrice ?? 0)"
+        castLabel.text = mediaItem.artistName
         let url = URL(string: mediaItem.artworkUrl100 ?? "")
         artworkImageView.kf.setImage(with: url)
         genreLabel.text = mediaItem.primaryGenreName

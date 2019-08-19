@@ -41,6 +41,21 @@ class APIManager: BaseAPIManager {
             Parameters.media.rawValue: media.rawValue
         ]
 
+//        /// To do:
+//        let jsonPath = Bundle.main.path(forResource: "response", ofType: "json")
+//        let jsonURL = URL(fileURLWithPath: jsonPath!)
+//
+//        let data = try! Data(contentsOf: jsonURL, options: .mappedIfSafe)
+//        let jsonDecoder = JSONDecoder()
+//        let response = try! jsonDecoder.decode(SearchResponse.self, from: data)
+//        return Observable.create { observer -> Disposable in
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+//                observer.onNext(Result.success(response))
+//            })
+//
+//            return Disposables.create()
+//        }
+
         return send(endpoint: SearchEndpoint.search, parameters: parameters)
     }
 }

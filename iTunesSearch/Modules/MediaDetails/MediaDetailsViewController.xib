@@ -15,6 +15,7 @@
                 <outlet property="castLabel" destination="t5N-Xb-dOT" id="2S0-gV-T7N"/>
                 <outlet property="descriptionLabel" destination="jXh-Fn-RT7" id="S8I-MB-7PP"/>
                 <outlet property="genreLabel" destination="irM-K9-wiI" id="UDj-C5-fnW"/>
+                <outlet property="lastVisitDateLabel" destination="swb-hH-qbz" id="Xwx-Cz-CIc"/>
                 <outlet property="mediaImageView" destination="iub-BH-S1D" id="F1F-Jq-nMd"/>
                 <outlet property="priceLabel" destination="c2A-z6-kvE" id="sOP-qT-qQc"/>
                 <outlet property="titleLabel" destination="Ena-jq-4EP" id="ckB-8U-mrN"/>
@@ -30,10 +31,10 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ND3-05-4qB" userLabel="ContainerView">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="144.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="175"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bzU-ko-yff">
-                                    <rect key="frame" x="16" y="16" width="382" height="112.5"/>
+                                    <rect key="frame" x="16" y="16" width="382" height="143"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="N3P-pc-7Dv">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="82"/>
@@ -81,8 +82,14 @@
                                                 </stackView>
                                             </subviews>
                                         </stackView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXh-Fn-RT7">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swb-hH-qbz">
                                             <rect key="frame" x="0.0" y="92" width="382" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXh-Fn-RT7">
+                                            <rect key="frame" x="0.0" y="122.5" width="382" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>

@@ -80,6 +80,5 @@ extension HomeViewController {
             .drive(searchResultsTableView.rx.items(dataSource: datasource))
             .disposed(by: disposeBag)
 
-
     }
 }

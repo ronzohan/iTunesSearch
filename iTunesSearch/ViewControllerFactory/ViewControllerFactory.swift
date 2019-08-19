@@ -20,7 +20,9 @@ struct ViewControllerFactory {
 
     static func makeMediaDetailsViewController(mediaItem: MediaItem) -> MediaDetailsViewController {
         let mediaDetailsViewController = MediaDetailsViewController.instantiateFromNib()
-        mediaDetailsViewController.viewModel = MediaDetailsViewModel(mediaItem: mediaItem)
+        let repository = MediaDetailsRepository()
+        mediaDetailsViewController.viewModel = MediaDetailsViewModel(mediaItem: mediaItem,
+                                                                     repository: repository)
         return mediaDetailsViewController
     }
 }

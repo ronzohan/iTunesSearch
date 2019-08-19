@@ -13,27 +13,32 @@ import RxCocoa
 class MediaDetailsViewModel {
     struct Input {
         let viewDidLoad: AnyObserver<Void>
+        let viewDidAppear: AnyObserver<Void>
     }
 
     struct Output {
-        let mediaItem: Driver<MediaItem?>
+        let mediaItem: Driver<MediaItemProtocol?>
     }
 
     // Input observers
     private let viewDidLoadSubject = PublishSubject<Void>()
+    private let viewDidAppearSubject = PublishSubject<Void>()
 
     // Output observables
-    private let mediaItemSubject = PublishSubject<MediaItem?>()
+    private let mediaItemSubject = PublishSubject<MediaItemProtocol?>()
 
-    private let mediaItem: MediaItem
+    private let mediaItem: MediaItemProtocol
     private let disposeBag = DisposeBag()
+    private let repository: MediaDetailsRepository
 
     let input: Input
     let output: Output
 
-    init(mediaItem: MediaItem) {
+    init(mediaItem: MediaItemProtocol, repository: MediaDetailsRepository) {
         self.mediaItem = mediaItem
-        input = Input(viewDidLoad: viewDidLoadSubject.asObserver())
+        self.repository = repository
+        input = Input(viewDidLoad: viewDidLoadSubject.asObserver(),
+                      viewDidAppear: viewDidAppearSubject.asObserver())
         output = Output(mediaItem: mediaItemSubject.asDriver(onErrorJustReturn: nil))
         setupBinding()
 
@@ -41,10 +46,21 @@ class MediaDetailsViewModel {
 
     private func setupBinding() {
         viewDidLoadSubject
-            .subscribe(onNext: { [weak self] in
-                guard let strongSelf = self else { return }
-                strongSelf.mediaItemSubject.onNext(strongSelf.mediaItem)
+            .flatMap { [unowned self] in self.repository.saveMediaItem(self.mediaItem) }
+            .subscribe(onNext: { [weak self] result in
+                switch result {
+                case .success(let response):
+                    self?.mediaItemSubject.onNext(response)
+                case .failure:
+                    break
+                }
             })
+            .disposed(by: disposeBag)
+
+        viewDidAppearSubject
+            .compactMap { self.mediaItem.trackId }
+            .flatMap { self.repository.setMediaItemVisitDate(withTrackID: $0, date: Date()) }
+            .subscribe()
             .disposed(by: disposeBag)
     }
 }
