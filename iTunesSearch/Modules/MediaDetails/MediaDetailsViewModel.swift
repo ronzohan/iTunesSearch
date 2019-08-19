@@ -14,6 +14,7 @@ class MediaDetailsViewModel {
     struct Input {
         let viewDidLoad: AnyObserver<Void>
         let viewDidAppear: AnyObserver<Void>
+        let viewDidDisappear: AnyObserver<Void>
     }
 
     struct Output {
@@ -23,6 +24,7 @@ class MediaDetailsViewModel {
     // Input observers
     private let viewDidLoadSubject = PublishSubject<Void>()
     private let viewDidAppearSubject = PublishSubject<Void>()
+    private let viewDidDisappearSubject = PublishSubject<Void>()
 
     // Output observables
     private let mediaItemSubject = PublishSubject<MediaItemProtocol?>()
@@ -38,7 +40,8 @@ class MediaDetailsViewModel {
         self.mediaItem = mediaItem
         self.repository = repository
         input = Input(viewDidLoad: viewDidLoadSubject.asObserver(),
-                      viewDidAppear: viewDidAppearSubject.asObserver())
+                      viewDidAppear: viewDidAppearSubject.asObserver(),
+                      viewDidDisappear: viewDidDisappearSubject.asObserver())
         output = Output(mediaItem: mediaItemSubject.asDriver(onErrorJustReturn: nil))
         setupBinding()
 
@@ -60,7 +63,16 @@ class MediaDetailsViewModel {
         viewDidAppearSubject
             .compactMap { self.mediaItem.trackId }
             .flatMap { self.repository.setMediaItemVisitDate(withTrackID: $0, date: Date()) }
-            .subscribe()
+            .subscribe(onNext: { _ in
+                UserDefaults.standard.set(self.mediaItem.trackId, forKey: "mediaItem")
+            })
+            .disposed(by: disposeBag)
+
+        viewDidDisappearSubject
+            .subscribe(onNext: {
+                UserDefaults.standard.value(forKey: "mediaItem")
+                UserDefaults.standard.set(nil, forKey: "mediaItem")
+            })
             .disposed(by: disposeBag)
     }
 }

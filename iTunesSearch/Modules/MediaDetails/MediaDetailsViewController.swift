@@ -20,6 +20,7 @@ class MediaDetailsViewController: UIViewController, NibInstantiated {
     // can forward viewDidLoad event to its ViewModel
     private let viewDidLoadSubject = PublishSubject<Void>()
     private let viewDidAppearSubject = PublishSubject<Void>()
+    private let viewDidDisappearSubject = PublishSubject<Void>()
 
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var mediaImageView: UIImageView!
@@ -44,6 +45,11 @@ class MediaDetailsViewController: UIViewController, NibInstantiated {
         viewDidAppearSubject.onNext(())
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        viewDidDisappearSubject.onNext(())
+    }
+
     private func setupInputBinding() {
         guard let viewModel = viewModel else { return }
 
@@ -53,6 +59,10 @@ class MediaDetailsViewController: UIViewController, NibInstantiated {
 
         viewDidAppearSubject
             .bind(to: viewModel.input.viewDidAppear)
+            .disposed(by: disposeBag)
+
+        viewDidDisappearSubject
+            .bind(to: viewModel.input.viewDidDisappear)
             .disposed(by: disposeBag)
     }
 
