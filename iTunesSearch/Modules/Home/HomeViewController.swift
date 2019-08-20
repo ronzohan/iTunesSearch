@@ -12,9 +12,12 @@ import RxDataSources
 import SnapKit
 
 class HomeViewController: UIViewController, NibInstantiated {
+    private struct Constant {
+        static let searchPlaceholder = "Search"
+    }
     private let disposeBag = DisposeBag()
 
-    private let searchBar = UISearchBar()
+    private let searchBar = UITextField()
     @IBOutlet private var searchResultsTableView: UITableView!
     private let loadingIndicator = UIActivityIndicatorView()
 
@@ -27,6 +30,9 @@ class HomeViewController: UIViewController, NibInstantiated {
         setupInputBinding()
         setupOutputBinding()
         setupTableView()
+
+        searchBar.rx.text.onNext("star")
+        searchBar.sendActions(for: .editingChanged)
     }
 
     private func setupView() {
@@ -35,9 +41,29 @@ class HomeViewController: UIViewController, NibInstantiated {
             make.center.equalToSuperview()
         }
         loadingIndicator.color = .gray
+        setupSearchBar()
+    }
+
+    private func setupSearchBar() {
+        if let navigationBar = navigationController?.navigationBar {
+            searchBar.frame = CGRect(x: 0,
+                                     y: 0,
+                                     width: navigationBar.frame.width,
+                                     height: navigationBar.frame.height - 8)
+        }
 
         searchBar.autocorrectionType = .no
         searchBar.autocapitalizationType = .none
+        searchBar.backgroundColor = .white
+        searchBar.layer.borderColor = UIColor.gray.cgColor
+        searchBar.layer.borderWidth = 0.5
+        searchBar.layer.cornerRadius = 10
+        searchBar.layer.masksToBounds = true
+        searchBar.rightViewMode = .always
+        searchBar.clearButtonMode = .whileEditing
+        searchBar.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 10))
+        searchBar.leftViewMode = .always
+        searchBar.placeholder = Constant.searchPlaceholder
     }
 
     private func setupTableView() {
