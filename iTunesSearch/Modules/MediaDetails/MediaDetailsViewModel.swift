@@ -60,18 +60,20 @@ class MediaDetailsViewModel {
             })
             .disposed(by: disposeBag)
 
-        viewDidAppearSubject
+        /*viewDidAppearSubject
             .compactMap { self.mediaItem.trackId }
             .flatMap { self.repository.setMediaItemVisitDate(withTrackID: $0, date: Date()) }
             .subscribe(onNext: { _ in
                 UserDefaults.standard.set(self.mediaItem.trackId, forKey: "mediaItem")
             })
-            .disposed(by: disposeBag)
+            .disposed(by: disposeBag)*/
 
         viewDidDisappearSubject
-            .subscribe(onNext: {
-                UserDefaults.standard.value(forKey: "mediaItem")
-                UserDefaults.standard.set(nil, forKey: "mediaItem")
+            .map { self.mediaItem.trackId }
+            .compactMap { $0 }
+            .flatMap { [unowned self] in self.repository.removeMediaItem(withTrackID: $0) }
+            .subscribe(onNext: { result in
+                debugPrint(result)
             })
             .disposed(by: disposeBag)
     }
