@@ -43,6 +43,9 @@ class HomeViewController: UIViewController, NibInstantiated {
     private func setupTableView() {
         searchResultsTableView.rowHeight = UITableView.automaticDimension
         searchResultsTableView.register(nib: MediaItemTableViewCell.self)
+
+        // Remove placeholder lines if there are no items
+        searchResultsTableView.tableFooterView = UIView()
     }
 }
 
