@@ -78,7 +78,7 @@ class HomeViewModel {
 
         selectedMediaItem
             .subscribe(onNext: { [weak self] item in
-                self?.delegate?.homeGoToDetail(with: item)
+                self?.delegate?.homeGoToDetail(with: item, animated: true)
             })
             .disposed(by: disposeBag)
     }
