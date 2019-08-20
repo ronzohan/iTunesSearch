@@ -16,12 +16,19 @@ class MediaItemTableViewCell: UITableViewCell {
     @IBOutlet var genreLabel: UILabel!
     @IBOutlet var artworkImageView: UIImageView!
 
-    func configure(with mediaItem: MediaItem) {
-        titleLabel.text = mediaItem.trackName
-        priceLabel.text = "\(mediaItem.currency ?? "AUD") \(mediaItem.trackPrice ?? 0)"
-        castLabel.text = mediaItem.artistName
-        let url = URL(string: mediaItem.artworkUrl100 ?? "")
-        artworkImageView.kf.setImage(with: url)
-        genreLabel.text = mediaItem.primaryGenreName
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        artworkImageView.layer.cornerRadius = 10
+        artworkImageView.clipsToBounds = true
+    }
+
+    func configure(with mediaItemViewModel: MediaItemViewModel) {
+        titleLabel.text = mediaItemViewModel.trackName
+        priceLabel.text = mediaItemViewModel.price
+        castLabel.text = mediaItemViewModel.artistName
+        genreLabel.text = mediaItemViewModel.genre
+        if let url = mediaItemViewModel.imageURL {
+            artworkImageView.kf.setImage(with: url)
+        }
     }
 }
