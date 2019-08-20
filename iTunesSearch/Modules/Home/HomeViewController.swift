@@ -15,11 +15,24 @@ class HomeViewController: UIViewController, NibInstantiated {
     private struct Constant {
         static let searchPlaceholder = "Search"
     }
-    private let disposeBag = DisposeBag()
 
-    private let searchBar = UITextField()
     @IBOutlet private var searchResultsTableView: UITableView!
+    private let searchBar = UITextField()
     private let loadingIndicator = UIActivityIndicatorView()
+    private let lastVisitDateLabel = UILabel()
+    lazy private var tableHeaderView: UIView = {
+        let view = UIView(frame: CGRect())
+        view.addSubview(lastVisitDateLabel)
+        lastVisitDateLabel.snp.makeConstraints({ make in
+            make.edges.equalToSuperview().inset(8)
+        })
+        return view
+    }()
+
+    private let disposeBag = DisposeBag()
+    // ViewDidLoad subject listener so that it can forward this event to the view model
+    private let viewDidLoadSubject = PublishSubject<Void>()
+    private let viewDidAppearSubject = PublishSubject<Void>()
 
     var viewModel: HomeViewModel?
 
@@ -33,6 +46,14 @@ class HomeViewController: UIViewController, NibInstantiated {
 
         searchBar.rx.text.onNext("star")
         searchBar.sendActions(for: .editingChanged)
+
+        // Set an event on viewDidLoadSubject so that observers to it can react accordingly
+        viewDidLoadSubject.onNext(())
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewDidAppearSubject.onNext(())
     }
 
     private func setupView() {
@@ -69,9 +90,15 @@ class HomeViewController: UIViewController, NibInstantiated {
     private func setupTableView() {
         searchResultsTableView.rowHeight = UITableView.automaticDimension
         searchResultsTableView.register(nib: MediaItemTableViewCell.self)
+        searchResultsTableView.register(nib: HeaderCell.self)
 
         // Remove placeholder lines if there are no items
         searchResultsTableView.tableFooterView = UIView()
+        searchResultsTableView.backgroundColor = .white
+        searchResultsTableView
+            .rx
+            .setDelegate(self)
+            .disposed(by: disposeBag)
     }
 }
 
@@ -79,7 +106,7 @@ class HomeViewController: UIViewController, NibInstantiated {
 extension HomeViewController {
     private func setupInputBinding() {
         guard let viewModel = viewModel else { return }
-
+        // Bind inputs to the view model
         searchBar
             .rx
             .text
@@ -89,6 +116,14 @@ extension HomeViewController {
 
         searchResultsTableView.rx.modelSelected(MediaItem.self)
             .bind(to: viewModel.input.selectedMediaItem)
+            .disposed(by: disposeBag)
+
+        viewDidLoadSubject
+            .bind(to: viewModel.input.viewDidLoad)
+            .disposed(by: disposeBag)
+
+        viewDidAppearSubject
+            .bind(to: viewModel.input.viewDidAppear)
             .disposed(by: disposeBag)
     }
 
@@ -110,5 +145,23 @@ extension HomeViewController {
             .drive(searchResultsTableView.rx.items(dataSource: datasource))
             .disposed(by: disposeBag)
 
+        viewModel.output.lastVisitDate
+            .drive(onNext: { [weak self] date in
+                self?.lastVisitDateLabel.text = date
+            })
+            .disposed(by: disposeBag)
+    }
+}
+
+extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return tableHeaderView
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let smallestPossibleHeight: CGFloat = 0.1
+        guard let viewModel = viewModel else { return smallestPossibleHeight }
+
+        return viewModel.showLastVisitHeaderView ? 44 : smallestPossibleHeight
     }
 }

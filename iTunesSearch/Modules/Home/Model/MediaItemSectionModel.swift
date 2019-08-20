@@ -18,6 +18,9 @@ struct MediaItemSectionModel {
 }
 
 extension MediaItemSectionModel: SectionModelType {
+
+    typealias Identity = String
+
     typealias Item = MediaItem
 
     init(original: MediaItemSectionModel, items: [MediaItem]) {
