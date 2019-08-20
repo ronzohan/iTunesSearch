@@ -9,5 +9,5 @@
 import Foundation
 
 protocol HomeDelegate: class {
-    func homeGoToDetail(with mediaItem: MediaItem)
+    func homeGoToDetail(with mediaItem: MediaItemProtocol, animated: Bool)
 }
