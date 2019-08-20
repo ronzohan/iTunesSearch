@@ -21,7 +21,12 @@
         <attribute name="trackName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="wrapperTypeString" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="LastViewedMediaItem" representedClassName="LastViewedMediaItem" syncable="YES" codeGenerationType="class">
+        <attribute name="trackId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDMediaItem" syncable="YES"/>
+    </entity>
     <elements>
         <element name="CDMediaItem" positionX="-63" positionY="-18" width="128" height="330"/>
+        <element name="LastViewedMediaItem" positionX="-63" positionY="126" width="128" height="75"/>
     </elements>
 </model>
