@@ -69,7 +69,8 @@ extension HomeViewController {
         let datasource = RxTableViewSectionedReloadDataSource<MediaItemSectionModel>(
             configureCell: { (_, tableView, indexPath, item) -> UITableViewCell in
                 let cell: MediaItemTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-                cell.configure(with: item)
+                let viewModel = MediaItemViewModel(mediaItem: item)
+                cell.configure(with: viewModel)
                 return cell
             }
         )
