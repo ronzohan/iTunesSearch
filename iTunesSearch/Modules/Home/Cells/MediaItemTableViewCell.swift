@@ -22,7 +22,6 @@ class MediaItemTableViewCell: UITableViewCell {
         selectionStyle = .none
     }
 
-
     /// Configure the cell with its corresponding ViewModel
     ///
     /// - Parameter mediaItemViewModel: The ViewModel for the MediaItem

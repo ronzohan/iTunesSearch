@@ -17,7 +17,6 @@ class MediaDetailsRepository {
 
     let context: NSManagedObjectContext
 
-
     /// Creates a new instance of MediaDetailsRepository with the given NSManagedObjectContext
     /// - Parameter context: Context that will be used for saving data
     init(context: NSManagedObjectContext = CoreDataManager.shared.persistentContainer.viewContext) {
