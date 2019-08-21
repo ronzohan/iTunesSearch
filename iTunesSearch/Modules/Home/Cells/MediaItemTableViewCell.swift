@@ -24,7 +24,7 @@ class MediaItemTableViewCell: UITableViewCell {
 
     func configure(with mediaItemViewModel: MediaItemViewModel) {
         titleLabel.text = mediaItemViewModel.trackName
-        priceLabel.text = mediaItemViewModel.price
+        priceLabel.text = mediaItemViewModel.buyPrice
         castLabel.text = mediaItemViewModel.artistName
         genreLabel.text = mediaItemViewModel.genre
         if let url = mediaItemViewModel.imageURL {
