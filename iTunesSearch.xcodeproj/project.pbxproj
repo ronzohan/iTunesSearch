@@ -46,6 +46,7 @@
 		6B194AA12307012A0036E437 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194AA02307012A0036E437 /* HomeViewModel.swift */; };
 		6B194AA32307018A0036E437 /* HomeViewModelRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194AA22307018A0036E437 /* HomeViewModelRepository.swift */; };
 		6B194AA5230703AB0036E437 /* MediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B194AA4230703AB0036E437 /* MediaType.swift */; };
+		6B1B0DDB230CE76C0092BAD6 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B0DDA230CE76C0092BAD6 /* BorderedButton.swift */; };
 		6B53DFAC230B83240054E3B3 /* MediaItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B53DFAB230B83240054E3B3 /* MediaItemViewModel.swift */; };
 		6B971C9F2308E56C004DE5AF /* MediaDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B971C9D2308E56C004DE5AF /* MediaDetailsViewController.swift */; };
 		6B971CA02308E56C004DE5AF /* MediaDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B971C9E2308E56C004DE5AF /* MediaDetailsViewController.xib */; };
@@ -130,6 +131,7 @@
 		6B194AA02307012A0036E437 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		6B194AA22307018A0036E437 /* HomeViewModelRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelRepository.swift; sourceTree = "<group>"; };
 		6B194AA4230703AB0036E437 /* MediaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaType.swift; sourceTree = "<group>"; };
+		6B1B0DDA230CE76C0092BAD6 /* BorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		6B53DFAB230B83240054E3B3 /* MediaItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItemViewModel.swift; sourceTree = "<group>"; };
 		6B971C9D2308E56C004DE5AF /* MediaDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailsViewController.swift; sourceTree = "<group>"; };
 		6B971C9E2308E56C004DE5AF /* MediaDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaDetailsViewController.xib; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		6B1949F02306DD4A0036E437 /* iTunesSearch */ = {
 			isa = PBXGroup;
 			children = (
+				6B1B0DD9230CE7600092BAD6 /* Common */,
 				6BD5544D23077DF10018734D /* response.json */,
 				6B194A002306DD4B0036E437 /* Info.plist */,
 				6B1949F12306DD4A0036E437 /* AppDelegate.swift */,
@@ -371,6 +374,14 @@
 				6B194A9E2306FB370036E437 /* ViewControllerFactory.swift */,
 			);
 			path = ViewControllerFactory;
+			sourceTree = "<group>";
+		};
+		6B1B0DD9230CE7600092BAD6 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				6B1B0DDA230CE76C0092BAD6 /* BorderedButton.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		6B971C9C2308E4A2004DE5AF /* MediaDetails */ = {
@@ -622,6 +633,7 @@
 				6B1949FA2306DD4A0036E437 /* iTunesSearch.xcdatamodeld in Sources */,
 				6B194AA5230703AB0036E437 /* MediaType.swift in Sources */,
 				6B971CAC230A2906004DE5AF /* CoreDataManager.swift in Sources */,
+				6B1B0DDB230CE76C0092BAD6 /* BorderedButton.swift in Sources */,
 				6B194A5E2306DF4C0036E437 /* URLSessionDataTaskProtocol.swift in Sources */,
 				6B53DFAC230B83240054E3B3 /* MediaItemViewModel.swift in Sources */,
 				6BED47F72307157D00D7FDCF /* MediaItemTableViewCell.swift in Sources */,
