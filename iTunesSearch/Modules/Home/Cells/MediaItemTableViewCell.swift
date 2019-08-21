@@ -17,6 +17,11 @@ class MediaItemTableViewCell: UITableViewCell {
     @IBOutlet var priceButton: UIButton!
     @IBOutlet var rentButton: UIButton!
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        selectionStyle = .none
+    }
+
     func configure(with mediaItemViewModel: MediaItemViewModel) {
         titleLabel.text = mediaItemViewModel.trackName
         priceButton.setTitle(mediaItemViewModel.buyPrice, for: .normal)
