@@ -62,6 +62,7 @@ class HomeViewController: UIViewController, NibInstantiated {
             make.center.equalToSuperview()
         }
         loadingIndicator.color = .gray
+        lastVisitDateLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         setupSearchBar()
     }
 
