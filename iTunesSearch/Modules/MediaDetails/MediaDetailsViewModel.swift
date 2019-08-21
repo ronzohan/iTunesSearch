@@ -18,7 +18,7 @@ class MediaDetailsViewModel {
     }
 
     struct Output {
-        let mediaItem: Driver<MediaItemProtocol?>
+        let mediaItemDetailsViewModel: Driver<MediaItemDetailsViewModel?>
     }
 
     // Input observers
@@ -27,7 +27,7 @@ class MediaDetailsViewModel {
     private let viewDidDisappearSubject = PublishSubject<Void>()
 
     // Output observables
-    private let mediaItemSubject = PublishSubject<MediaItemProtocol?>()
+    private let mediaItemDetailsViewModelSubject = PublishSubject<MediaItemDetailsViewModel?>()
 
     private let mediaItem: MediaItemProtocol
     private let disposeBag = DisposeBag()
@@ -42,7 +42,9 @@ class MediaDetailsViewModel {
         input = Input(viewDidLoad: viewDidLoadSubject.asObserver(),
                       viewDidAppear: viewDidAppearSubject.asObserver(),
                       viewDidDisappear: viewDidDisappearSubject.asObserver())
-        output = Output(mediaItem: mediaItemSubject.asDriver(onErrorJustReturn: nil))
+        output = Output(
+            mediaItemDetailsViewModel: mediaItemDetailsViewModelSubject.asDriver(onErrorJustReturn: nil)
+        )
         setupBinding()
 
     }
@@ -53,20 +55,13 @@ class MediaDetailsViewModel {
             .subscribe(onNext: { [weak self] result in
                 switch result {
                 case .success(let response):
-                    self?.mediaItemSubject.onNext(response)
+                    let viewModel = MediaItemDetailsViewModel(mediaItem: response)
+                    self?.mediaItemDetailsViewModelSubject.onNext(viewModel)
                 case .failure:
                     break
                 }
             })
             .disposed(by: disposeBag)
-
-        /*viewDidAppearSubject
-            .compactMap { self.mediaItem.trackId }
-            .flatMap { self.repository.setMediaItemVisitDate(withTrackID: $0, date: Date()) }
-            .subscribe(onNext: { _ in
-                UserDefaults.standard.set(self.mediaItem.trackId, forKey: "mediaItem")
-            })
-            .disposed(by: disposeBag)*/
 
         viewDidDisappearSubject
             .map { self.mediaItem.trackId }
