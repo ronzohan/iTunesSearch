@@ -28,7 +28,6 @@ class MediaDetailsViewController: UIViewController, NibInstantiated {
     @IBOutlet var castLabel: UILabel!
     @IBOutlet var genreLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
-    @IBOutlet var lastVisitDateLabel: UILabel!
 
     var viewModel: MediaDetailsViewModel?
 
@@ -70,30 +69,26 @@ class MediaDetailsViewController: UIViewController, NibInstantiated {
         guard let viewModel = viewModel else { return }
         viewModel
             .output
-            .mediaItem
-            .drive(onNext: { [weak self] mediaItem in
-                guard let mediaItem = mediaItem else { return }
-                self?.setupView(with: mediaItem)
+            .mediaItemDetailsViewModel
+            .drive(onNext: { [weak self] viewModel in
+                guard let viewModel = viewModel else { return }
+                self?.setupView(with: viewModel)
             })
             .disposed(by: disposeBag)
     }
 
-    private func setupView(with mediaItem: MediaItemProtocol) {
-        titleLabel.text = mediaItem.trackName
-        priceLabel.text = "\(mediaItem.currency ?? "AUD") \(mediaItem.trackPrice ?? 0)"
-        castLabel.text = mediaItem.artistName
-        let url = URL(string: mediaItem.artworkUrl100 ?? "")
-        mediaImageView.kf.setImage(with: url)
-        genreLabel.text = mediaItem.primaryGenreName
-        descriptionLabel.text = mediaItem.longDescription
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM d, h:mm a"
-
-        if let date = mediaItem.lastVisitDate {
-            lastVisitDateLabel.text = dateFormatter.string(from: date)
+    private func setupView(with mediaItemViewModel: MediaItemDetailsViewModel) {
+        titleLabel.text = mediaItemViewModel.trackName
+        priceLabel.text = mediaItemViewModel.buyPrice
+        castLabel.text = mediaItemViewModel.artistName
+        if let url = mediaItemViewModel.imageURL {
+            mediaImageView.kf.setImage(with: url)
         }
 
-        lastVisitDateLabel.isHidden = mediaItem.lastVisitDate == nil
+        genreLabel.text = mediaItemViewModel.genre
+        descriptionLabel.text = mediaItemViewModel.longDescription
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, h:mm a"
     }
 
     private func setupStyle() {
