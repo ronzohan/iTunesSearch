@@ -9,9 +9,9 @@
 import Foundation
 
 class MediaItemViewModel {
-    private let mediaItem: MediaItem
+    let mediaItem: MediaItemProtocol
 
-    init(mediaItem: MediaItem) {
+    init(mediaItem: MediaItemProtocol) {
         self.mediaItem = mediaItem
     }
 
@@ -19,8 +19,9 @@ class MediaItemViewModel {
         return mediaItem.trackName
     }
 
-    var price: String? {
-        return "\(mediaItem.currency ?? "AUD") \(mediaItem.trackPrice ?? 0)"
+    var buyPrice: String? {
+        guard let price = mediaItem.trackPrice else { return nil }
+        return "\(mediaItem.currency ?? "AUD") \(String(format: "%.2f", price))"
     }
 
     var artistName: String? {
@@ -33,5 +34,11 @@ class MediaItemViewModel {
 
     var genre: String? {
         return mediaItem.primaryGenreName
+    }
+}
+
+class MediaItemDetailsViewModel: MediaItemViewModel {
+    var longDescription: String? {
+        return mediaItem.longDescription
     }
 }
