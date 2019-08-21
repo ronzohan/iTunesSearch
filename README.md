@@ -1,4 +1,4 @@
 ## Requirements:
 
-### Xcode 10.3+
-### Cocoapods
+* Xcode 10.3+
+* Cocoapods
