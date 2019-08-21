@@ -23,7 +23,7 @@ class HomeViewModel {
     }
 
     struct Output {
-        let mediaItems: Driver<[MediaItemSectionModel]>
+        let mediaItemSectionModel: Driver<[MediaItemSectionModel]>
         let isLoading: Driver<Bool>
         let lastVisitDate: Driver<String?>
     }
@@ -56,7 +56,7 @@ class HomeViewModel {
                       viewDidAppear: viewDidAppearSubject.asObserver(),
                       searchQueryString: searchQueryStringSubject.asObserver(),
                       selectedMediaItem: selectedMediaItem.asObserver())
-        output = Output(mediaItems: mediaItemsSubject.asDriver(onErrorJustReturn: []),
+        output = Output(mediaItemSectionModel: mediaItemsSubject.asDriver(onErrorJustReturn: []),
                         isLoading: isLoadingSubject.asDriver(onErrorJustReturn: false),
                         lastVisitDate: lastVisitDateSubject.asDriver(onErrorJustReturn: nil))
         setupBinding()
@@ -99,7 +99,7 @@ class HomeViewModel {
                 self?.isLoadingSubject.onNext(true)
             })
             // Fetch result for query string
-            .flatMap { [repository] in repository.searchItunesFor(term: $0, country: "au", media: .movie) }
+            .flatMap { [repository] in repository.searchItunesFor(term: $0, country: "ph", media: .movie) }
             // Hide loading indicator
             .do(onNext: { [weak self] _ in self?.isLoadingSubject.onNext(false) })
             .subscribe(onNext: { [weak self] result in self?.handleSearchResponseResult(result) })

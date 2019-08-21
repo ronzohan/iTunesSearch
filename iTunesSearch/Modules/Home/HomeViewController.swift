@@ -143,7 +143,19 @@ extension HomeViewController {
 
         viewModel
             .output
-            .mediaItems
+            .mediaItemSectionModel
+            .do(onNext: { [weak self] sectionModels in
+                guard let self = self else { return }
+                if let isEmpty = sectionModels.first?.items.isEmpty, isEmpty {
+                    self.view.addSubview(self.emptyMessageView)
+                    self.emptyMessageView.snp.makeConstraints({ make in
+                        make.edges.equalToSuperview()
+                    })
+                    self.view.bringSubviewToFront(self.emptyMessageView)
+                } else {
+                    self.emptyMessageView.removeFromSuperview()
+                }
+            })
             .drive(searchResultsTableView.rx.items(dataSource: datasource))
             .disposed(by: disposeBag)
 
