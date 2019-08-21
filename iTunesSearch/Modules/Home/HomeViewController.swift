@@ -32,7 +32,9 @@ class HomeViewController: UIViewController, NibInstantiated {
     }()
 
     private let disposeBag = DisposeBag()
-    // ViewDidLoad subject listener so that it can forward this event to the view model
+
+    // Observables for the ViewControllers' lifecycle so that HomeViewController
+    // can forward the lifecycles events to its ViewModel
     private let viewDidLoadSubject = PublishSubject<Void>()
     private let viewDidAppearSubject = PublishSubject<Void>()
 
@@ -49,12 +51,13 @@ class HomeViewController: UIViewController, NibInstantiated {
         searchTextField.rx.text.onNext("star")
         searchTextField.sendActions(for: .editingChanged)
 
-        // Set an event on viewDidLoadSubject so that observers to it can react accordingly
+        // Forward an event on viewDidLoadSubject so that observers to it can react accordingly
         viewDidLoadSubject.onNext(())
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        // Forward an event on viewDidAppearSubject
         viewDidAppearSubject.onNext(())
     }
 
@@ -146,6 +149,7 @@ extension HomeViewController {
         viewModel
             .output
             .mediaItemSectionModel
+            // Check if an EmptyMessageView should be shown
             .do(onNext: { [weak self] sectionModels in
                 guard let self = self else { return }
                 if let isEmpty = sectionModels.first?.items.isEmpty, isEmpty {
@@ -158,6 +162,7 @@ extension HomeViewController {
                     self.emptyMessageView.removeFromSuperview()
                 }
             })
+            // Bind MediaItemSectionModel to the SearchResultsTableView
             .drive(searchResultsTableView.rx.items(dataSource: datasource))
             .disposed(by: disposeBag)
 

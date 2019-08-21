@@ -11,24 +11,27 @@ import RxSwift
 import RxCocoa
 
 class MediaDetailsViewModel {
+    // MARK: - Input
     struct Input {
         let viewDidLoad: AnyObserver<Void>
         let viewDidAppear: AnyObserver<Void>
         let viewDidDisappear: AnyObserver<Void>
     }
 
+    // MARK: - Output
     struct Output {
         let mediaItemDetailsViewModel: Driver<MediaItemDetailsViewModel?>
     }
 
-    // Input observers
+    // MARK: - Input observers
     private let viewDidLoadSubject = PublishSubject<Void>()
     private let viewDidAppearSubject = PublishSubject<Void>()
     private let viewDidDisappearSubject = PublishSubject<Void>()
 
-    // Output observables
+    // MARK: - Output observables
     private let mediaItemDetailsViewModelSubject = PublishSubject<MediaItemDetailsViewModel?>()
 
+    // MARK: - Properties
     private let mediaItem: MediaItemProtocol
     private let disposeBag = DisposeBag()
     private let repository: MediaDetailsRepository
@@ -36,6 +39,7 @@ class MediaDetailsViewModel {
     let input: Input
     let output: Output
 
+    // MARK: - Functions
     init(mediaItem: MediaItemProtocol, repository: MediaDetailsRepository) {
         self.mediaItem = mediaItem
         self.repository = repository
@@ -51,7 +55,7 @@ class MediaDetailsViewModel {
 
     private func setupBinding() {
         viewDidLoadSubject
-            .flatMap { [unowned self] in self.repository.saveMediaItem(self.mediaItem) }
+            .flatMap { [unowned self] in self.repository.saveOrUpdate(self.mediaItem) }
             .subscribe(onNext: { [weak self] result in
                 switch result {
                 case .success(let response):

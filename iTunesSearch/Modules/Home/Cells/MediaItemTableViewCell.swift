@@ -22,6 +22,10 @@ class MediaItemTableViewCell: UITableViewCell {
         selectionStyle = .none
     }
 
+
+    /// Configure the cell with its corresponding ViewModel
+    ///
+    /// - Parameter mediaItemViewModel: The ViewModel for the MediaItem
     func configure(with mediaItemViewModel: MediaItemViewModel) {
         titleLabel.text = mediaItemViewModel.trackName
         priceButton.setTitle(mediaItemViewModel.buyPrice, for: .normal)

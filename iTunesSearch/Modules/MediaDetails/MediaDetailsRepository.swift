@@ -17,13 +17,19 @@ class MediaDetailsRepository {
 
     let context: NSManagedObjectContext
 
+
+    /// Creates a new instance of MediaDetailsRepository with the given NSManagedObjectContext
+    /// - Parameter context: Context that will be used for saving data
     init(context: NSManagedObjectContext = CoreDataManager.shared.persistentContainer.viewContext) {
         self.context = context
     }
 
-    // This will update the MediaItem if the MediaItem already exists in the data
-    // or save it
-    func saveMediaItem(_ mediaItem: MediaItemProtocol) -> Observable<Result<MediaItemProtocol, Error>> {
+    /// Save the media item if it doesn't exist in the database yet or update its value if its
+    /// already existing
+    ///
+    /// - Parameter mediaItem: Media Item
+    /// - Returns: Returns the saved MediaItem or an error
+    func saveOrUpdate(_ mediaItem: MediaItemProtocol) -> Observable<Result<MediaItemProtocol, Error>> {
         return Observable.create({ [weak self] observer -> Disposable in
             guard let strongSelf = self else { return Disposables.create() }
             do {
@@ -42,6 +48,8 @@ class MediaDetailsRepository {
                                               forKey: Constant.mediaItemTrackIDKey)
                     observer.onNext(Result.success(cdMediaDetail))
                 } else if let existingMediaItem = existingMediaItem {
+                    existingMediaItem.updateWith(mediaItem: mediaItem)
+                    try strongSelf.context.save()
                     observer.onNext(Result.success(existingMediaItem))
                     UserDefaults.standard.set(existingMediaItem.trackId,
                                               forKey: Constant.mediaItemTrackIDKey)

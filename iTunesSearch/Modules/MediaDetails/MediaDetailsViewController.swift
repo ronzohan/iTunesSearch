@@ -12,16 +12,20 @@ import RxSwift
 import RxCocoa
 
 class MediaDetailsViewController: UIViewController, NibInstantiated {
+    // MARK: - Properties
     // Thread safe bag that disposes added disposables/observables for the purpose of
     // resource management in RxSwift
     private let disposeBag = DisposeBag()
 
-    // Observable for viewDidLoad so that MediaDetailsViewController
-    // can forward viewDidLoad event to its ViewModel
+    // Observables for the ViewControllers' lifecycle so that MediaDetailsViewController
+    // can forward the lifecycles events to its ViewModel
     private let viewDidLoadSubject = PublishSubject<Void>()
     private let viewDidAppearSubject = PublishSubject<Void>()
     private let viewDidDisappearSubject = PublishSubject<Void>()
 
+    var viewModel: MediaDetailsViewModel?
+
+    // MARK: - Subviews
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var mediaImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
@@ -30,8 +34,7 @@ class MediaDetailsViewController: UIViewController, NibInstantiated {
     @IBOutlet var buyPriceButton: UIButton!
     @IBOutlet var rentPriceButton: UIButton!
 
-    var viewModel: MediaDetailsViewModel?
-
+    // MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         setupStyle()
@@ -50,6 +53,7 @@ class MediaDetailsViewController: UIViewController, NibInstantiated {
         viewDidDisappearSubject.onNext(())
     }
 
+    /// Bind the subjects to the viewModel
     private func setupInputBinding() {
         guard let viewModel = viewModel else { return }
 
@@ -66,6 +70,7 @@ class MediaDetailsViewController: UIViewController, NibInstantiated {
             .disposed(by: disposeBag)
     }
 
+    /// Bind the output of the viewModel to the corresponding listeners
     private func setupOutputBinding() {
         guard let viewModel = viewModel else { return }
         viewModel
@@ -78,6 +83,9 @@ class MediaDetailsViewController: UIViewController, NibInstantiated {
             .disposed(by: disposeBag)
     }
 
+    /// Setup the view given a ViewModel
+    ///
+    /// - Parameter mediaItemViewModel: ViewModel for the MediaItem retrieved
     private func setupView(with mediaItemViewModel: MediaItemDetailsViewModel) {
         titleLabel.text = mediaItemViewModel.trackName
 
@@ -98,6 +106,7 @@ class MediaDetailsViewController: UIViewController, NibInstantiated {
         dateFormatter.dateFormat = "MMM d, h:mm a"
     }
 
+    /// Setup styling of the subviews
     private func setupStyle() {
         descriptionLabel.numberOfLines = 0
         titleLabel.numberOfLines = 0

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Singleton object for user that will handle the retrieval and setting of lastVisitDate
 class UserInfoManager {
     private struct Constant {
         static let lastVisitDate = "lastVisitDate"

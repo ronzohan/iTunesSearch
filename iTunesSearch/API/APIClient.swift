@@ -9,7 +9,6 @@
 import Foundation
 import RxSwift
 
-#warning("TODO: Create unit test for API Client")
 class APIClient {
     var authManager: AuthManagerProtocol?
     var appToken: String?

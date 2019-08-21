@@ -11,10 +11,6 @@ import Foundation
 class MediaItemViewModel {
     let mediaItem: MediaItemProtocol
 
-    init(mediaItem: MediaItemProtocol) {
-        self.mediaItem = mediaItem
-    }
-
     private let priceFormat = "%.2f"
 
     var trackName: String? {
@@ -41,6 +37,10 @@ class MediaItemViewModel {
 
     var genre: String? {
         return mediaItem.primaryGenreName
+    }
+
+    init(mediaItem: MediaItemProtocol) {
+        self.mediaItem = mediaItem
     }
 }
 

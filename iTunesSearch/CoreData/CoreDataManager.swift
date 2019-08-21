@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-// MARK: - Core Data stack
+/// Core Data Stack
 class CoreDataManager {
     static let shared: CoreDataManager = CoreDataManager()
 
