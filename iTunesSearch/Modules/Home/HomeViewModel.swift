@@ -113,7 +113,7 @@ class HomeViewModel {
 
     private func handleLastVisitDate(_ date: Date) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E, MMM d yyyy"
+        dateFormatter.dateFormat = "E, MMM d yyyy hh:mm a"
         let lastVisitText = "\(Constant.lastVisitDateText) \(dateFormatter.string(from: date))"
         lastVisitDateSubject.onNext(lastVisitText)
     }
