@@ -210,12 +210,12 @@
 		6B1949F02306DD4A0036E437 /* iTunesSearch */ = {
 			isa = PBXGroup;
 			children = (
-				6B1B0DD9230CE7600092BAD6 /* Common */,
 				6BD5544D23077DF10018734D /* response.json */,
 				6B194A002306DD4B0036E437 /* Info.plist */,
 				6B1949F12306DD4A0036E437 /* AppDelegate.swift */,
 				6B1949FB2306DD4B0036E437 /* Assets.xcassets */,
 				6B194A222306DF4C0036E437 /* API */,
+				6B1B0DD9230CE7600092BAD6 /* Common */,
 				6B194A7D2306E6170036E437 /* Coordinator */,
 				6B971CA5230997F3004DE5AF /* CoreData */,
 				6B194A832306E6BE0036E437 /* Extensions */,
