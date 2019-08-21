@@ -48,6 +48,7 @@ class HomeViewModel {
     let output: Output
 
     private(set) var showLastVisitHeaderView = false
+    private var hasLastVisitDate = false
 
     init(repository: HomeViewModelRepositoryProtocol) {
         self.repository = repository
@@ -74,7 +75,7 @@ class HomeViewModel {
                 }
             })
             .do(onNext: { [weak self] date in
-                self?.showLastVisitHeaderView = date != nil
+                self?.hasLastVisitDate = date != nil
             })
             // Remove all nil values
             .compactMap { $0 }
@@ -121,6 +122,7 @@ class HomeViewModel {
     private func handleSearchResponseResult(_ result: Result<SearchResponse, Error>) {
         switch result {
         case .success(let response):
+            showLastVisitHeaderView = !response.results.isEmpty && hasLastVisitDate
             let mediaItemSectionModels = mediaItemSectionModel(for: response.results)
             mediaItemsSubject.onNext([mediaItemSectionModels])
         default:
