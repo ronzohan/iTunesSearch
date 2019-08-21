@@ -15,6 +15,7 @@ class MediaItemTableViewCell: UITableViewCell {
     @IBOutlet var castLabel: UILabel!
     @IBOutlet var genreLabel: UILabel!
     @IBOutlet var artworkImageView: UIImageView!
+    @IBOutlet var rentalPrice: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +28,7 @@ class MediaItemTableViewCell: UITableViewCell {
         priceLabel.text = mediaItemViewModel.buyPrice
         castLabel.text = mediaItemViewModel.artistName
         genreLabel.text = mediaItemViewModel.genre
+        rentalPrice.text = mediaItemViewModel.rentPrice
         if let url = mediaItemViewModel.imageURL {
             artworkImageView.kf.setImage(with: url)
         }

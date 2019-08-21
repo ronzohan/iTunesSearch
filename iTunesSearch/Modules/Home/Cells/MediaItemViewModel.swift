@@ -15,13 +15,20 @@ class MediaItemViewModel {
         self.mediaItem = mediaItem
     }
 
+    private let priceFormat = "%.2f"
+
     var trackName: String? {
         return mediaItem.trackName
     }
 
     var buyPrice: String? {
-        guard let price = mediaItem.trackPrice else { return nil }
-        return "\(mediaItem.currency ?? "AUD") \(String(format: "%.2f", price))"
+        guard let price = mediaItem.trackPrice, price != 0 else { return nil }
+        return "Buy: \(mediaItem.currency ?? "AUD") \(String(format: priceFormat, price))"
+    }
+
+    var rentPrice: String? {
+        guard let price = mediaItem.trackRentalPrice, price != 0 else { return nil }
+        return "Rent: \(mediaItem.currency ?? "AUD") \(String(format: priceFormat, price))"
     }
 
     var artistName: String? {

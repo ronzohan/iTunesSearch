@@ -27,7 +27,8 @@ class MediaDetailsViewController: UIViewController, NibInstantiated {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var castLabel: UILabel!
     @IBOutlet var genreLabel: UILabel!
-    @IBOutlet var priceLabel: UILabel!
+    @IBOutlet var buyPriceButton: UIButton!
+    @IBOutlet var rentPriceButton: UIButton!
 
     var viewModel: MediaDetailsViewModel?
 
@@ -79,7 +80,13 @@ class MediaDetailsViewController: UIViewController, NibInstantiated {
 
     private func setupView(with mediaItemViewModel: MediaItemDetailsViewModel) {
         titleLabel.text = mediaItemViewModel.trackName
-        priceLabel.text = mediaItemViewModel.buyPrice
+
+        buyPriceButton.setTitle(mediaItemViewModel.buyPrice, for: .normal)
+        buyPriceButton.isHidden = mediaItemViewModel.buyPrice == nil
+
+        rentPriceButton.setTitle(mediaItemViewModel.rentPrice, for: .normal)
+        rentPriceButton.isHidden = mediaItemViewModel.rentPrice == nil
+
         castLabel.text = mediaItemViewModel.artistName
         if let url = mediaItemViewModel.imageURL {
             mediaImageView.kf.setImage(with: url)
@@ -96,5 +103,19 @@ class MediaDetailsViewController: UIViewController, NibInstantiated {
         titleLabel.numberOfLines = 0
         castLabel.numberOfLines = 0
         genreLabel.numberOfLines = 0
+
+        buyPriceButton.layer.borderWidth = 2
+        buyPriceButton.layer.borderColor = UIColor.gray.cgColor
+        buyPriceButton.layer.cornerRadius = 5
+        buyPriceButton.setTitleColor(.black, for: .normal)
+        buyPriceButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        buyPriceButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+
+        rentPriceButton.layer.borderWidth = 2
+        rentPriceButton.layer.borderColor = UIColor.gray.cgColor
+        rentPriceButton.layer.cornerRadius = 5
+        rentPriceButton.setTitleColor(.black, for: .normal)
+        rentPriceButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        rentPriceButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
     }
 }
