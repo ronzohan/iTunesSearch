@@ -17,7 +17,7 @@ class HomeViewController: UIViewController, NibInstantiated {
     }
 
     @IBOutlet private var searchResultsTableView: UITableView!
-    private let searchBar = UITextField()
+    private let searchTextField = UITextField()
     private let loadingIndicator = UIActivityIndicatorView()
     private let lastVisitDateLabel = UILabel()
     lazy private var tableHeaderView: UIView = {
@@ -38,14 +38,14 @@ class HomeViewController: UIViewController, NibInstantiated {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.titleView = searchBar
+        navigationItem.titleView = searchTextField
         setupView()
         setupInputBinding()
         setupOutputBinding()
         setupTableView()
 
-        searchBar.rx.text.onNext("star")
-        searchBar.sendActions(for: .editingChanged)
+        searchTextField.rx.text.onNext("star")
+        searchTextField.sendActions(for: .editingChanged)
 
         // Set an event on viewDidLoadSubject so that observers to it can react accordingly
         viewDidLoadSubject.onNext(())
@@ -68,29 +68,31 @@ class HomeViewController: UIViewController, NibInstantiated {
 
     private func setupSearchBar() {
         if let navigationBar = navigationController?.navigationBar {
-            searchBar.frame = CGRect(x: 0,
+            searchTextField.frame = CGRect(x: 0,
                                      y: 0,
                                      width: navigationBar.frame.width,
                                      height: navigationBar.frame.height - 8)
         }
 
-        searchBar.autocorrectionType = .no
-        searchBar.autocapitalizationType = .none
-        searchBar.backgroundColor = .white
-        searchBar.layer.borderColor = UIColor.gray.cgColor
-        searchBar.layer.borderWidth = 0.5
-        searchBar.layer.cornerRadius = 10
-        searchBar.layer.masksToBounds = true
-        searchBar.rightViewMode = .always
-        searchBar.clearButtonMode = .whileEditing
-        searchBar.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 10))
-        searchBar.leftViewMode = .always
-        searchBar.placeholder = Constant.searchPlaceholder
+        searchTextField.autocorrectionType = .no
+        searchTextField.autocapitalizationType = .none
+        searchTextField.backgroundColor = .white
+        searchTextField.returnKeyType = .search
+        searchTextField.layer.borderColor = UIColor.gray.cgColor
+        searchTextField.layer.borderWidth = 0.5
+        searchTextField.layer.cornerRadius = 10
+        searchTextField.layer.masksToBounds = true
+        searchTextField.rightViewMode = .always
+        searchTextField.clearButtonMode = .whileEditing
+        searchTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 10))
+        searchTextField.leftViewMode = .always
+        searchTextField.placeholder = Constant.searchPlaceholder
     }
 
     private func setupTableView() {
         searchResultsTableView.rowHeight = UITableView.automaticDimension
         searchResultsTableView.register(nib: MediaItemTableViewCell.self)
+        searchResultsTableView.keyboardDismissMode = .onDrag
 
         // Remove placeholder lines if there are no items
         searchResultsTableView.tableFooterView = UIView()
@@ -107,7 +109,7 @@ extension HomeViewController {
     private func setupInputBinding() {
         guard let viewModel = viewModel else { return }
         // Bind inputs to the view model
-        searchBar
+        searchTextField
             .rx
             .text
             .orEmpty
