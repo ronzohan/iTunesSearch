@@ -99,7 +99,7 @@ class HomeViewModel {
                 self?.isLoadingSubject.onNext(true)
             })
             // Fetch result for query string
-            .flatMap { [repository] in repository.searchItunesFor(term: $0, country: "ph", media: .movie) }
+            .flatMap { [repository] in repository.searchItunesFor(term: $0, country: "au", media: .movie) }
             // Hide loading indicator
             .do(onNext: { [weak self] _ in self?.isLoadingSubject.onNext(false) })
             .subscribe(onNext: { [weak self] result in self?.handleSearchResponseResult(result) })
