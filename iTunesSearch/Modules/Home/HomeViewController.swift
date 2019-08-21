@@ -14,12 +14,14 @@ import SnapKit
 class HomeViewController: UIViewController, NibInstantiated {
     private struct Constant {
         static let searchPlaceholder = "Search"
+        static let emptyMessageText = "There seems to be nothing here..."
     }
 
     @IBOutlet private var searchResultsTableView: UITableView!
     private let searchTextField = UITextField()
     private let loadingIndicator = UIActivityIndicatorView()
     private let lastVisitDateLabel = UILabel()
+    private let emptyMessageView = EmptyMessageView.withMessage(Constant.emptyMessageText)
     lazy private var tableHeaderView: UIView = {
         let view = UIView(frame: CGRect())
         view.addSubview(lastVisitDateLabel)
@@ -77,13 +79,13 @@ class HomeViewController: UIViewController, NibInstantiated {
         searchTextField.autocorrectionType = .no
         searchTextField.autocapitalizationType = .none
         searchTextField.backgroundColor = .white
-        searchTextField.returnKeyType = .search
+        searchTextField.returnKeyType = .done
         searchTextField.layer.borderColor = UIColor.gray.cgColor
         searchTextField.layer.borderWidth = 0.5
         searchTextField.layer.cornerRadius = 10
         searchTextField.layer.masksToBounds = true
         searchTextField.rightViewMode = .always
-        searchTextField.clearButtonMode = .whileEditing
+        searchTextField.clearButtonMode = .always
         searchTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 10))
         searchTextField.leftViewMode = .always
         searchTextField.placeholder = Constant.searchPlaceholder
@@ -164,29 +166,19 @@ extension HomeViewController {
                 self?.lastVisitDateLabel.text = date
             })
             .disposed(by: disposeBag)
-
-        viewModel.output.isLoading
-            .drive(onNext: { [weak self] isLoading in
-                if isLoading {
-                    self?.loadingIndicator.startAnimating()
-                } else {
-                    self?.loadingIndicator.stopAnimating()
-                }
-
-            })
-            .disposed(by: disposeBag)
     }
 }
 
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return tableHeaderView
+        guard let viewModel = viewModel else { return nil }
+        return viewModel.showLastVisitHeaderView ? tableHeaderView : nil
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let smallestPossibleHeight: CGFloat = 0.1
         guard let viewModel = viewModel else { return smallestPossibleHeight }
 
-        return viewModel.showLastVisitHeaderView ? 44 : smallestPossibleHeight
+        return viewModel.showLastVisitHeaderView ? 44 : CGFloat.leastNormalMagnitude
     }
 }
