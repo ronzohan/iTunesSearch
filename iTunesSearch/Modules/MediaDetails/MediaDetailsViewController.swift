@@ -103,19 +103,5 @@ class MediaDetailsViewController: UIViewController, NibInstantiated {
         titleLabel.numberOfLines = 0
         castLabel.numberOfLines = 0
         genreLabel.numberOfLines = 0
-
-        buyPriceButton.layer.borderWidth = 2
-        buyPriceButton.layer.borderColor = UIColor.gray.cgColor
-        buyPriceButton.layer.cornerRadius = 5
-        buyPriceButton.setTitleColor(.black, for: .normal)
-        buyPriceButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        buyPriceButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
-
-        rentPriceButton.layer.borderWidth = 2
-        rentPriceButton.layer.borderColor = UIColor.gray.cgColor
-        rentPriceButton.layer.cornerRadius = 5
-        rentPriceButton.setTitleColor(.black, for: .normal)
-        rentPriceButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        rentPriceButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
     }
 }

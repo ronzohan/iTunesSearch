@@ -73,10 +73,10 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7WJ-QB-QQ2">
                                                                     <rect key="frame" x="0.0" y="69.5" width="30" height="68"/>
                                                                     <subviews>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wcb-HI-c9E" userLabel="Buy Price">
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wcb-HI-c9E" userLabel="Buy Price" customClass="BorderedButton" customModule="iTunesSearch" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                                         </button>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D0h-XZ-xeO" userLabel="Rent Price">
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D0h-XZ-xeO" userLabel="Rent Price" customClass="BorderedButton" customModule="iTunesSearch" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="38" width="30" height="30"/>
                                                                         </button>
                                                                     </subviews>
