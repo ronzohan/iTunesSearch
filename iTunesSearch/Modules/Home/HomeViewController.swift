@@ -129,7 +129,7 @@ extension HomeViewController {
     private func setupOutputBinding() {
         guard let viewModel = viewModel else { return }
 
-        let datasource = RxTableViewSectionedReloadDataSource<MediaItemSectionModel>(
+        let datasource = RxTableViewSectionedAnimatedDataSource<MediaItemSectionModel>(
             configureCell: { (_, tableView, indexPath, item) -> UITableViewCell in
                 let cell: MediaItemTableViewCell = tableView.dequeueReusableCell(for: indexPath)
                 let viewModel = MediaItemViewModel(mediaItem: item)

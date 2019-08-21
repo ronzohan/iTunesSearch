@@ -17,7 +17,18 @@ struct MediaItemSectionModel {
     }
 }
 
-extension MediaItemSectionModel: SectionModelType {
+extension MediaItem: IdentifiableType {
+    typealias Identity = Int
+
+    var identity: Int {
+        return trackId ?? 0
+    }
+}
+
+extension MediaItemSectionModel: AnimatableSectionModelType {
+    var identity: String {
+        return "mediaItems"
+    }
 
     typealias Identity = String
 

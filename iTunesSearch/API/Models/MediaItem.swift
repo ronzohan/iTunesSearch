@@ -28,7 +28,7 @@ protocol MediaItemProtocol {
     var longDescription: String? { get }
 }
 
-struct MediaItem: Codable, MediaItemProtocol {
+struct MediaItem: Codable, MediaItemProtocol, Equatable {
     let wrapperType: WrapperType?
     let trackId: Int?
     let kind: Kind?
