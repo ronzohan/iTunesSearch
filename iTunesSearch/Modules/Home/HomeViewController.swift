@@ -149,6 +149,17 @@ extension HomeViewController {
                 self?.lastVisitDateLabel.text = date
             })
             .disposed(by: disposeBag)
+
+        viewModel.output.isLoading
+            .drive(onNext: { [weak self] isLoading in
+                if isLoading {
+                    self?.loadingIndicator.startAnimating()
+                } else {
+                    self?.loadingIndicator.stopAnimating()
+                }
+
+            })
+            .disposed(by: disposeBag)
     }
 }
 
